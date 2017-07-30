@@ -1,8 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import { DrawerNavigator, DrawerItems } from 'react-navigation';
 import HomeStackNavigator from 'components/navigation/home-stack-navigator';
 import { COLORS } from 'constants/styles';
+import styled from 'styled-components/native';
+
+const DrawerContainer = styled.View`
+  flex: 1;
+  background-color: ${COLORS.GREY.BRIGHT_GREY};
+`;
+
+const AppContainer = styled.View`
+  flex: 1;
+  background-color: ${COLORS.GREY.BLACK_RUSSIAN};
+`;
 
 const drawerRouteConfig = {
   Home: {
@@ -11,9 +22,9 @@ const drawerRouteConfig = {
 };
 
 const CustomDrawerContentComponent = props => (
-  <View style={styles.drawer}>
+  <DrawerContainer>
     <DrawerItems {...props} />
-  </View>
+  </DrawerContainer>
 );
 
 const drawerNavigatorConfig = {
@@ -25,21 +36,10 @@ const AppDrawer = DrawerNavigator(drawerRouteConfig, drawerNavigatorConfig);
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <AppContainer>
         <StatusBar hidden={true} />
         <AppDrawer />
-      </View>
+      </AppContainer>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.GREY.BLACK_RUSSIAN,
-  },
-  drawer: {
-    flex: 1,
-    backgroundColor: COLORS.GREY.BRIGHT_GREY,
-  },
-});
