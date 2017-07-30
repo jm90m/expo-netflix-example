@@ -163,7 +163,14 @@ class HomeScreen extends Component {
         </SubHeader>
         <ScrollView horizontal={true}>
           <ImageContainer>
-            {ShowData.map((show, index) => <Image source={show.image} key={index} />)}
+            {ShowData.map((show, index) => (
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('ShowDetails', show)}
+                key={index}
+              >
+                <Image source={show.image} key={index} />
+              </TouchableOpacity>
+            ))}
           </ImageContainer>
         </ScrollView>
         <SubHeader>
@@ -179,7 +186,14 @@ class HomeScreen extends Component {
         </SubHeader>
         <ScrollView horizontal={true}>
           <ImageContainer>
-            {ShowData.map((show, index) => <Image source={show.image} key={index} />)}
+            {ShowData.map((show, index) => (
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('ShowDetails', show)}
+                key={index}
+              >
+                <Image source={show.image} key={index} />
+              </TouchableOpacity>
+            ))}
           </ImageContainer>
         </ScrollView>
         <SubHeader>
